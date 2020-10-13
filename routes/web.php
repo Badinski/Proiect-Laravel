@@ -16,19 +16,9 @@ use App\Http\Controllers\PagesController;
 
 
 Route::get('/',[PagesController::class, 'home']);
-Route::get('/about', [PagesController::class, 'about']);
-Route::get('/services', [PagesController::class, 'services']);
-Route::get('/review', [PagesController::class, 'review']);
-
-
-/*
-Route::get('/services', function(){
-    return view('pages.services');
-});
-
-Route::get('/about', function(){
-    return view('pages.about');
-});*/
+//Route::get('/about', [PagesController::class, 'about']);
+//Route::get('/services', [PagesController::class, 'services']);
+//Route::get('/review', [PagesController::class, 'review']);
 
 Auth::routes();
 
