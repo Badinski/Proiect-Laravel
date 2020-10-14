@@ -3,8 +3,8 @@
 @section('title', 'Services')
 
 @section('content')
-  <h1>Services page</h1>
-  <p>This is the services page!</p>
+  <h1>Support page</h1>
+  <p>This is the support page!</p>
   <a href="/">Go back</a>
 
 @endsection

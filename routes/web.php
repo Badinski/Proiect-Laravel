@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +17,11 @@ use App\Http\Controllers\PagesController;
 
 
 Route::get('/',[PagesController::class, 'home']);
-//Route::get('/about', [PagesController::class, 'about']);
-//Route::get('/services', [PagesController::class, 'services']);
+Route::get('/about', [PagesController::class, 'about']);
+Route::get('/support', [PagesController::class, 'support']);
 //Route::get('/review', [PagesController::class, 'review']);
+
+Route::resource('posts', PostController::class);
 
 Auth::routes();
 
