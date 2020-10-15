@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -24,9 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        
 
-        if($user->isAdmin == false) return view('pages.about');
-        else return view('pages.support');
+      //  if($user->isAdmin == false) return view('home')->with('posts', $user->posts);
+        return view('home')->with('posts', $user->posts);
     }
 }
