@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -39,6 +40,10 @@ class PostController extends Controller
         /*if(!Auth::check()){
           return redirect('/login')->with('error', 'You need to be logged in to post!');
         }*/
+        if(Auth::user()->isAdmin == false){
+          return redirect('posts')->with('error', 'Unauthorized page');
+        }
+
         return view('posts.create');
     }
 
@@ -104,10 +109,14 @@ class PostController extends Controller
     public function edit($id)
     {
       $post = Post::find($id);
-      if(auth()->user()->id !== $post->user_id){
+
+      if($post == NULL){
         return redirect('/posts')->with('error', 'Unauthorized page');
       }
-      return view('posts.edit')->with('post', $post);
+      else if(auth()->user()->id !== $post->user_id){
+        return redirect('/posts')->with('error', 'Unauthorized page');
+      }
+      else return view('posts.edit')->with('post', $post);
     }
 
     /**
@@ -147,7 +156,7 @@ class PostController extends Controller
       }
       $post->save();
 
-      return redirect('/home')->with('success', 'Post updated');
+      return redirect('/posts')->with('success', 'Post updated');
     }
 
     /**

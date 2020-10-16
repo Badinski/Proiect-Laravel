@@ -27,9 +27,9 @@ class HomeController extends Controller
     {
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
-        
 
-      //  if($user->isAdmin == false) return view('home')->with('posts', $user->posts);
-        return view('home')->with('posts', $user->posts);
+
+      if($user->isAdmin == false) return view('pages.userHome')->with('posts', $user->posts);
+        return view('pages.adminHome')->with('posts', $user->posts);
     }
 }

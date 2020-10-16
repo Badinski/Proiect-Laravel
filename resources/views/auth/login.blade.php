@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
 @include('inc.messages')
+
+@section('navigation')
+  <li class="nav-item">
+      <a class="nav-link" href="/">Home</a>
+  </li>
+
+  <li class="nav-item">
+      <a class="nav-link" href="/about">About</a>
+  </li>
+
+@endsection
+
 @section('content')
 
 <div class="container">

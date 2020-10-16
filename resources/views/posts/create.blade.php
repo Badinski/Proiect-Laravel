@@ -1,6 +1,26 @@
 @extends('layouts.app')
 
+@section('authenticated-navigation')
+  <li class="nav-item">
+      <a class="nav-link" href="/userControl">User control</a>
+  </li>
+
+  <li class="nav-item">
+      <a class="nav-link" href="/myPosts">My posts</a>
+  </li>
+
+  <li class="nav-item">
+      <a class="nav-link" href="/posts">Articles</a>
+  </li>
+
+  <li class="nav-item">
+      <a class="nav-link" href="/posts/create">Add Post</a>
+  </li>
+
+@endsection
+
 @section('content')
+
   <h1>Create post</h1><br>
   {!! Form::open(['action' => 'App\Http\Controllers\PostController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
     <div class="form-group">

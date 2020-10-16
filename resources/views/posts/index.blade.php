@@ -1,5 +1,38 @@
 @extends('layouts.app')
 
+@section('authenticated-navigation')
+  @if(Auth::user()->isAdmin == true)
+    <li class="nav-item">
+        <a class="nav-link" href="/userControl">User control</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="/myPosts">My posts</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="/posts">Articles</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="/posts/create">Add Post</a>
+    </li>
+  @else
+    <li class="nav-item">
+        <a class="nav-link" href="/home">Home</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="/posts">Articles</a>
+    </li>
+  @endif
+
+@endsection
+
 @section('content')
   <h1>Posts</h1><br>
 
